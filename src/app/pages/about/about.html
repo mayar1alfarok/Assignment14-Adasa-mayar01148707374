@@ -1,0 +1,306 @@
+<section class="about-page">
+
+    <!-- =========================================
+       HERO
+  ========================================== -->
+
+    <section class="about-hero">
+
+        <div class="about-hero-content">
+
+            <span class="hero-label">
+                <span class="label-dot"></span>
+                من نحن
+                <span class="label-dot"></span>
+            </span>
+
+
+            <h1>
+                مهمتنا هي
+                <span>الإعلام والإلهام</span>
+            </h1>
+
+
+            <p>
+                مدونة متخصصة في فن التصوير الفوتوغرافي. نشارك معكم أسرار المحترفين
+                ونصائح عملية لتطوير مهاراتكم. نحن شغوفون بمشاركة المعرفة ومساعدة
+                المصورين على تنمية مهاراتهم من خلال محتوى عالي الجودة.
+            </p>
+
+
+            <!-- Statistics -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">▣</div>
+
+                    <strong>15+</strong>
+
+                    <span>تصنيف</span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">✎</div>
+
+                    <strong>50+</strong>
+
+                    <span>كاتب خبير</span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">▤</div>
+
+                    <strong>500+</strong>
+
+                    <span>مقالة منشورة</span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">♟</div>
+
+                    <strong>2+ مليون</strong>
+
+                    <span>قارئ شهريًا</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+       VALUES
+  ========================================== -->
+
+    <section class="values-section">
+
+        <div class="values-container">
+
+            <div class="section-heading">
+
+                <h2>
+                    قيمنا
+                </h2>
+
+                <p>
+                    المبادئ التي توجه كل ما نقوم بإنشائه
+                </p>
+
+            </div>
+
+
+            <div class="values-grid">
+
+                <article class="value-card">
+
+                    <div class="value-icon">
+                        ◎
+                    </div>
+
+                    <h3>
+                        الجودة أولًا
+                    </h3>
+
+                    <p>
+                        محتوى مدروس ومكتوب بخبرة
+                    </p>
+
+                </article>
+
+
+                <article class="value-card">
+
+                    <div class="value-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        تركيز عملي
+                    </h3>
+
+                    <p>
+                        أمثلة واقعية يمكنك تطبيقها اليوم
+                    </p>
+
+                </article>
+
+
+                <article class="value-card">
+
+                    <div class="value-icon">
+                        🤝
+                    </div>
+
+                    <h3>
+                        المجتمع
+                    </h3>
+
+                    <p>
+                        تعلم مع آلاف المصورين
+                    </p>
+
+                </article>
+
+
+                <article class="value-card">
+
+                    <div class="value-icon">
+                        ⟳
+                    </div>
+
+                    <h3>
+                        دائمًا محدث
+                    </h3>
+
+                    <p>
+                        أحدث الاتجاهات وأفضل الممارسات
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+       TEAM
+  ========================================== -->
+
+    <section class="team-section">
+
+        <div class="team-container">
+
+            <!-- Heading -->
+
+            <div class="section-heading team-heading">
+
+                <span class="section-label">
+                    <span class="label-dot"></span>
+                    فريقنا
+                </span>
+
+                <h2>
+                    تعرف على كتابنا
+                </h2>
+
+                <p>
+                    فريقنا من المصورين والكتاب ذوي الخبرة شغوفون بمشاركة معرفتهم مع المجتمع.
+                </p>
+
+            </div>
+
+
+            <!-- Team Cards -->
+
+            <div class="team-grid">
+
+                @for (author of authors; track author.name) {
+
+                <article class="team-card">
+
+                    <div class="author-image-wrapper">
+
+                        <img [src]="author.avatar" [alt]="author.name" class="author-image">
+
+                        <span class="verified">
+                            ✓
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        {{ author.name }}
+                    </h3>
+
+                    <p class="author-role">
+                        {{ author.role }}
+                    </p>
+
+                    <div class="social-links">
+
+                        <a href="#" aria-label="LinkedIn">
+                            in
+                        </a>
+
+                        <a href="#" aria-label="GitHub">
+                            ●
+                        </a>
+
+                        <a href="#" aria-label="X">
+                            X
+                        </a>
+
+                    </div>
+
+                </article>
+
+                }
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+       CTA
+  ========================================== -->
+
+    <section class="contact-section">
+
+        <div class="contact-content">
+
+            <h2>
+                لديك أسئلة؟ دعنا نتحدث!
+            </h2>
+
+
+            <p>
+                نحب أن نسمع منك. سواء كان لديك سؤال حول محتوى، أو تريد المساهمة،
+                أو تريد فقط إلقاء التحية، لا تتردد في التواصل.
+            </p>
+
+
+            <div class="contact-buttons">
+
+                <a routerLink="/articles" class="contact-button secondary-button">
+                    تصفح المقالات
+                </a>
+
+
+                <a href="mailto:hello@adasah.com" class="contact-button primary-button">
+                    <span>تواصل معنا</span>
+
+                    <span class="mail-icon">
+                        ✉
+                    </span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>

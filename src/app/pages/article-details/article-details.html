@@ -1,0 +1,339 @@
+@if (post) {
+
+<section class="article-page">
+
+    <!-- Article Hero -->
+    <div class="article-hero">
+
+        <img [src]="post.image" [alt]="post.title" class="hero-image">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <div class="breadcrumb">
+                <span>الرئيسية</span>
+                <span>‹</span>
+                <span>المدونة</span>
+                <span>‹</span>
+                <span>{{ post.category }}</span>
+            </div>
+
+            <div class="article-meta">
+
+                <span class="category">
+                    {{ post.category }}
+                </span>
+
+                <span>
+                    📅 {{ post.date }}
+                </span>
+
+                <span>
+                    ◷ {{ post.readTime }}
+                </span>
+
+            </div>
+
+            <h1>
+                {{ post.title }}
+            </h1>
+
+            <div class="author-card">
+
+                <img [src]="post.author.avatar" [alt]="post.author.name">
+
+                <div>
+                    <strong>{{ post.author.name }}</strong>
+                    <span>{{ post.author.role }}</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Article Main Section -->
+    <section class="article-body">
+
+        <!-- Right Side: Article -->
+        <div class="article-content">
+
+            <div class="article-excerpt">
+                "{{ post.excerpt }}"
+            </div>
+
+            <div class="article-text">
+
+                @for (section of post.content.split('\n\n'); track $index) {
+
+                @if (section.startsWith('## ')) {
+
+                <h2>
+                    {{ section.replace('## ', '') }}
+                </h2>
+
+                } @else {
+
+                <p>
+                    {{ section }}
+                </p>
+
+                }
+
+                }
+
+            </div>
+
+
+            <!-- Tags -->
+            <div class="tags-card">
+
+                <div class="article-tags">
+
+                    @for (tag of post.tags; track tag) {
+
+                    <span class="tag">
+                        #{{ tag }}
+                    </span>
+
+                    }
+
+                </div>
+
+            </div>
+
+
+            <!-- Share -->
+            <div class="share-card">
+
+                <div class="share-title">
+
+                    <div class="share-icon">
+                        ↗
+                    </div>
+
+                    <h3>شارك المقال</h3>
+
+                </div>
+
+                <div class="share-links">
+
+                    <a href="#" aria-label="Link">
+                        🔗
+                    </a>
+
+                    <a href="#" aria-label="WhatsApp">
+                        ◉
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        in
+                    </a>
+
+                    <a href="#" aria-label="X">
+                        𝕏
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Author -->
+            <div class="author-info-card">
+
+                <img [src]="post.author.avatar" [alt]="post.author.name" class="author-info-image">
+
+                <div class="author-info-content">
+
+                    <span class="author-label">
+                        كاتب المقال
+                    </span>
+
+                    <h3>
+                        {{ post.author.name }}
+                    </h3>
+
+                    <p class="author-role">
+                        {{ post.author.role }}
+                    </p>
+
+                    <p class="author-description">
+                        مصور محترف شغوف بمشاركة المعرفة والخبرات في عالم التصوير الفوتوغرافي.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Left Side: Sidebar -->
+        <aside class="article-sidebar">
+
+            <!-- Contents -->
+            <div class="contents-card">
+
+                <div class="contents-title">
+                    <span>☷</span>
+                    <h3>محتويات المقال</h3>
+                </div>
+
+                <div class="contents-item">
+                    <span>1</span>
+                    <p>المعدات الأساسية</p>
+                </div>
+
+                <div class="contents-item">
+                    <span>2</span>
+                    <p>توقيت التصوير</p>
+                </div>
+
+                <div class="contents-item">
+                    <span>3</span>
+                    <p>التكوين الفني</p>
+                </div>
+
+                <div class="contents-item">
+                    <span>4</span>
+                    <p>إعدادات الكاميرا</p>
+                </div>
+
+                <div class="contents-item">
+                    <span>5</span>
+                    <p>المعالجة اللاحقة</p>
+                </div>
+
+                <div class="contents-item">
+                    <span>6</span>
+                    <p>الخلاصة</p>
+                </div>
+
+            </div>
+
+
+            <!-- Info -->
+            <div class="article-info-card">
+
+                <div class="info-box">
+                    <span>📅</span>
+                    <strong>{{ post.date }}</strong>
+                    <small>تاريخ النشر</small>
+                </div>
+
+                <div class="info-box">
+                    <span>◷</span>
+                    <strong>{{ post.readTime }}</strong>
+                    <small>وقت القراءة</small>
+                </div>
+
+            </div>
+
+
+            <!-- Newsletter -->
+            <div class="newsletter-card">
+
+                <div class="newsletter-icon">
+                    ✉
+                </div>
+
+                <h3>لا تفوّت جديدنا</h3>
+
+                <p>
+                    اشترك في نشرتنا البريدية واحصل على أحدث المقالات والنصائح
+                </p>
+
+                <button>
+                    اشترك الآن
+                </button>
+
+            </div>
+
+        </aside>
+
+    </section>
+    <!-- Related Articles -->
+
+    <section class="related-articles">
+
+        <div class="related-header">
+
+            <div class="related-title">
+
+                <div class="related-icon">
+                    ▣
+                </div>
+
+                <div>
+                    <h2>مقالات قد تعجبك</h2>
+                    <p>استكشف المزيد من المحتوى المميز</p>
+                </div>
+
+            </div>
+
+            <a routerLink="/articles" class="view-all">
+                عرض الكل
+                <span>←</span>
+            </a>
+
+        </div>
+
+
+        <div class="related-grid">
+
+            @for (article of relatedPosts; track article.id) {
+
+            <a [routerLink]="['/articles', article.id]" class="related-card">
+
+                <div class="related-image">
+
+                    <img [src]="article.image" [alt]="article.title">
+
+                    <span class="related-category">
+                        {{ article.category }}
+                    </span>
+
+                </div>
+
+
+                <div class="related-content">
+
+                    <h3>
+                        {{ article.title }}
+                    </h3>
+
+
+                    <div class="related-meta">
+
+                        <div class="related-author">
+
+                            <img [src]="article.author.avatar" [alt]="article.author.name">
+
+                            <span>
+                                {{ article.author.name }}
+                            </span>
+
+                        </div>
+
+                        <span>
+                            {{ article.readTime }} للقراءة
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+            }
+
+        </div>
+
+    </section>
+</section>
+
+}

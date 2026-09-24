@@ -1,0 +1,491 @@
+<!-- =========================
+     Hero Section
+========================= -->
+
+<section class="home-hero">
+
+    <div class="hero-content">
+
+        <!-- Welcome Badge -->
+
+        <div class="welcome-badge">
+
+            <span class="dot"></span>
+
+            <span>مرحباً بك في عدسة</span>
+
+            <span class="dot"></span>
+
+        </div>
+
+
+        <!-- Title -->
+
+        <h1>
+            اكتشف
+            <span>فن</span>
+            التصوير الفوتوغرافي
+        </h1>
+
+
+        <!-- Description -->
+
+        <p>
+            انغمس في أسرار المحترفين ونصائح عملية لتطوير مهاراتك في التصوير.
+        </p>
+
+
+        <!-- Buttons -->
+
+        <div class="hero-buttons">
+
+            <a routerLink="/articles" class="primary-button">
+                استكشف المقالات
+                <span>←</span>
+            </a>
+
+
+            <a routerLink="/about" class="secondary-button">
+                اعرف المزيد
+                <span>ⓘ</span>
+            </a>
+
+        </div>
+
+
+        <!-- Statistics -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ▣
+                </div>
+
+                <strong>50+</strong>
+
+                <span>مقالة</span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <strong>10+</strong>
+
+                <span>قارئ</span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ▰
+                </div>
+
+                <strong>4</strong>
+
+                <span>تصنيفات</span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ✎
+                </div>
+
+                <strong>6</strong>
+
+                <span>كاتب</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     Latest Articles
+========================= -->
+
+<!-- =========================
+     Featured Articles
+========================= -->
+
+<section class="featured-section">
+
+    <div class="featured-header">
+
+        <div class="featured-heading">
+
+            <span class="featured-badge">
+                <span>●</span>
+                مميز
+                <span>●</span>
+            </span>
+
+            <h2>
+                مقالات مختارة
+            </h2>
+
+            <p>
+                محتوى منتقى لبدء رحلة تعلمك
+            </p>
+
+        </div>
+
+
+        <a routerLink="/articles" class="featured-view-all">
+            عرض الكل
+            <span>‹</span>
+        </a>
+
+    </div>
+
+
+    @if (loading()) {
+
+    <p class="loading">
+        جاري تحميل المقالات...
+    </p>
+
+    }
+
+
+    @if (!loading()) {
+
+    <div class="featured-list">
+
+        @for (post of featuredPosts; track post.id) {
+
+        <a [routerLink]="['/articles', post.id]" class="featured-card">
+
+            <!-- Image -->
+
+            <div class="featured-image">
+
+                <img [src]="post.image" [alt]="post.title">
+
+                <span class="featured-label">
+                    ★ مميز
+                </span>
+
+            </div>
+
+
+            <!-- Content -->
+
+            <div class="featured-content">
+
+                <div class="featured-meta">
+
+                    <span class="featured-category">
+                        {{ post.category }}
+                    </span>
+
+                    <span>
+                        ◷ {{ post.readTime }} للقراءة
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    {{ post.title }}
+                </h3>
+
+
+                <p>
+                    {{ post.excerpt }}
+                </p>
+
+
+                <div class="featured-bottom">
+
+                    <div class="featured-author">
+
+                        <img [src]="post.author.avatar" [alt]="post.author.name">
+
+                        <div>
+                            <strong>
+                                {{ post.author.name }}
+                            </strong>
+
+                            <small>
+                                {{ post.date }}
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <span class="read-more">
+                        اقرأ المقال
+                        ←
+                    </span>
+
+                </div>
+
+            </div>
+
+        </a>
+
+        }
+
+    </div>
+
+    }
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+     Categories
+========================= -->
+
+<section class="categories-section">
+
+    <div class="categories-container">
+
+        <!-- Header -->
+
+        <div class="categories-header">
+
+            <div class="categories-heading">
+
+                <span class="categories-badge">
+
+                    <span>●</span>
+
+                    التصنيفات
+
+                    <span>●</span>
+
+                </span>
+
+
+                <h2>
+                    استكشف حسب الموضوع
+                </h2>
+
+
+                <p>
+                    اعثر على محتوى مصمم حسب اهتماماتك
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Categories -->
+
+        @if (!loading()) {
+
+        <div class="categories-grid">
+
+            @for (category of categories(); track category.name) {
+
+            <a [routerLink]="['/articles']" [queryParams]="{ category: category.name }" class="category-card">
+
+                <div class="category-icon">
+
+                    {{ getCategoryIcon(category.name) }}
+
+                </div>
+
+
+                <h3>
+                    {{ category.name }}
+                </h3>
+
+
+                <span class="category-count">
+
+                    {{ getCategoryCount(category.name) }}
+
+                    مقالة
+
+                </span>
+
+            </a>
+
+            }
+
+        </div>
+
+        }
+
+    </div>
+
+</section>
+
+
+<!-- Latest Articles -->
+<section class="latest-section">
+
+    <div class="latest-container">
+
+        <div class="latest-header">
+
+            <div class="latest-heading">
+
+                <span class="latest-badge">
+                    <span>●</span>
+                    الأحدث
+                    <span>●</span>
+                </span>
+
+                <h2>أحدث المقالات</h2>
+
+                <p>محتوى جديد طازج من المطبعة</p>
+
+            </div>
+
+            <a routerLink="/articles" class="latest-view-all">
+                عرض جميع المقالات
+                <span>←</span>
+            </a>
+
+        </div>
+
+
+        <div class="latest-grid">
+
+            @for (post of posts().slice(0, 3); track post.id) {
+
+            <a [routerLink]="['/articles', post.id]" class="latest-card">
+
+                <div class="latest-image">
+
+                    <img [src]="post.image" [alt]="post.title">
+
+                    <span class="latest-category">
+                        {{ post.category }}
+                    </span>
+
+                </div>
+
+
+                <div class="latest-content">
+
+                    <h3>
+                        {{ post.title }}
+                    </h3>
+
+                    <p>
+                        {{ post.excerpt }}
+                    </p>
+
+
+                    <div class="latest-footer">
+
+                        <div class="latest-author">
+
+                            <img [src]="post.author.avatar" [alt]="post.author.name">
+
+                            <div>
+                                <strong>{{ post.author.name }}</strong>
+                                <small>مصور ومراجع تقني</small>
+                            </div>
+
+                        </div>
+
+
+                        <span class="latest-arrow">
+                            ←
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+            }
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+<!-- Newsletter -->
+<section class="newsletter-section">
+
+    <div class="newsletter-container">
+
+        <div class="newsletter-icon">
+            <span>✉</span>
+        </div>
+
+        <div class="newsletter-content">
+
+            <span class="newsletter-badge">
+                ابقَ على اطلاع
+            </span>
+
+            <h2>
+                لا تفوّت أي لحظة
+            </h2>
+
+            <p>
+                اشترك في نشرتنا البريدية واحصل على أحدث المقالات والنصائح
+                والحيل في عالم التصوير مباشرة إلى بريدك الإلكتروني.
+            </p>
+
+            <div class="newsletter-form">
+
+                <input type="email" placeholder="أدخل بريدك الإلكتروني">
+
+                <button type="button">
+                    اشترك الآن
+                </button>
+
+            </div>
+
+            <div class="newsletter-info">
+
+                <div class="newsletter-avatars">
+                    <img src="https://i.pravatar.cc/100?img=12" alt="">
+                    <img src="https://i.pravatar.cc/100?img=32" alt="">
+                    <img src="https://i.pravatar.cc/100?img=47" alt="">
+                </div>
+
+                <span>
+                    انضم لـ <strong>10,000+</strong> مصور
+                </span>
+
+                <span>بدون إزعاج</span>
+
+                <span>إلغاء الاشتراك في أي وقت</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

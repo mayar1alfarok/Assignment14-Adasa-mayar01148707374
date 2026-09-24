@@ -1,0 +1,187 @@
+<section class="articles-page">
+
+    <!-- ================= HERO ================= -->
+
+    <div class="articles-hero">
+
+        <div class="hero-content">
+
+            <span class="hero-label">
+                <span class="label-dot"></span>
+                مدونة عدسة
+            </span>
+
+            <h1>
+                استكشف
+                <span>مقالاتنا</span>
+            </h1>
+
+            <p>
+                اكتشف الدروس والرؤى وأفضل الممارسات لتطوير مهاراتك في التصوير الفوتوغرافي
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FILTERS ================= -->
+
+    <div class="filters-section">
+
+        <div class="filters-container">
+
+            <!-- Search -->
+
+            <div class="search-box">
+
+                <input type="text" placeholder="إبحث في المقالات..." (input)="onSearch($event)">
+
+                <span class="search-icon">
+                    ⌕
+                </span>
+
+            </div>
+
+
+            <!-- Categories -->
+
+            <div class="categories">
+
+                @for (category of categories; track category) {
+
+                <button type="button" class="category-button" [class.active]="selectedCategory === category"
+                    (click)="filterByCategory(category)">
+
+                    {{ category }}
+
+                </button>
+
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ARTICLES ================= -->
+
+    <div class="container">
+
+        <!-- Articles Count -->
+
+        <div class="articles-toolbar">
+
+            <div class="view-buttons">
+
+                <button type="button" class="view-button" [class.active]="viewMode === 'grid'"
+                    (click)="viewMode = 'grid'">
+                    ▦
+                </button>
+
+                <button type="button" class="view-button" [class.active]="viewMode === 'list'"
+                    (click)="viewMode = 'list'">
+                    ☰
+                </button>
+
+            </div>
+
+            <div class="articles-count">
+
+                عرض
+                <strong>{{ filteredPosts.length }}</strong>
+                مقالات
+
+            </div>
+
+        </div>
+
+
+        <!-- Articles Grid -->
+
+        <div class="articles-grid" [class.list-view]="viewMode === 'list'">
+
+            @for (post of displayedPosts; track post.id) {
+
+            <article class="article-card" [routerLink]="['/articles', post.id]">
+
+                <img [src]="post.image" [alt]="post.title">
+
+                <div class="article-content">
+
+                    <span class="category">
+                        {{ post.category }}
+                    </span>
+
+                    <h2>
+                        {{ post.title }}
+                    </h2>
+
+                    <p>
+                        {{ post.excerpt }}
+                    </p>
+
+                    <div class="article-meta">
+
+                        <span>
+                            {{ post.author.name }}
+                        </span>
+
+                        <span>
+                            {{ post.readTime }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            }
+
+        </div>
+
+
+        <!-- No Results -->
+
+        @if (filteredPosts.length === 0) {
+
+        <div class="no-results">
+
+            <h3>لا توجد مقالات</h3>
+
+            <p>
+                جربي البحث بكلمة أخرى أو اختاري تصنيفًا مختلفًا.
+            </p>
+
+        </div>
+
+        }
+        <div class="pagination">
+
+            <button class="page-button" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+                ‹
+            </button>
+
+            @for (page of [].constructor(totalPages); track $index) {
+
+            <button class="page-button" [class.active]="currentPage === $index + 1" (click)="goToPage($index + 1)">
+                {{ $index + 1 }}
+            </button>
+
+            }
+
+            <button class="page-button" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">›
+            </button>
+
+        </div>
+
+        <p class="page-info">
+            صفحة {{ currentPage }} من {{ totalPages }}
+        </p>
+
+    </div>
+
+</section>

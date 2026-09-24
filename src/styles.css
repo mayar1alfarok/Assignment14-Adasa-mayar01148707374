@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: #0d0b09;
+  --color-surface: #1a1613;
+  --color-surface-2: #241e19;
+  --color-ink: #f5efe6;
+  --color-ink-muted: #a99c8c;
+  --color-ink-faint: #6e6255;
+  --color-accent: #f2751a;
+  --color-accent-soft: #7c3a12;
+  --color-accent-tint: #fdba85;
+  --color-line: rgb(245 239 230 / 10%);
+  --color-line-strong: rgb(245 239 230 / 18%);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+}
